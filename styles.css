@@ -1,0 +1,116 @@
+/* CSS Variables */
+:root {
+    --darkPurple: #351C75;
+    --lightPurple: #BD60E7;
+    --lavender: #D9D3E8;
+}
+
+/* Base styles */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 70px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-weight: 900;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+p {
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: var(--lightPurple);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Hide all tabs by default */
+.step {
+    display: none;
+}
+
+/* Header styles */
+
+header {
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#timer {
+    display: inline;
+}
+
+/* Quiz styles */
+
+#start-quiz p {
+    text-align: center;
+}
+
+#start-quiz button {
+    margin: auto;
+    margin-top: 40px;
+}
+
+#form-container, #high-scores-container {
+    width: 40%;
+    height: 80vh;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 30px;
+}
+
+button {
+    font-size: 22px;
+    color: white;
+    background-color: var(--darkPurple);
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: none;
+    display: block;
+    margin: 10px 0px;
+}
+
+button:hover {
+    background-color: var(--lightPurple);
+    cursor: pointer;
+}
+
+#final-score-step button {
+    display: inline-block;
+}
+
+#initials {
+    margin: 0px 10px;
+    font-size: 18px;
+}
+
+
+
+/* High score styles */
+
+
+/* Media Queries */
+
+@media screen and (max-width: 1600px) {
+    #form-container, #high-scores-container {
+        width: 60%;
+    }
+}
