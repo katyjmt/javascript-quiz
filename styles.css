@@ -3,6 +3,7 @@
     --darkPurple: #351C75;
     --lightPurple: #BD60E7;
     --lavender: #D9D3E8;
+    --smoke: rgb(163, 163, 163);
 }
 
 /* Base styles */
@@ -102,7 +103,14 @@ button:hover {
     font-size: 18px;
 }
 
-
+.correctIncorrect {
+    border-top: 1px solid var(--smoke);
+    margin-top: 30px;
+    padding: 10px 0px;
+    font-size: 24px;
+    font-style: italic;
+    color: var(--smoke);
+}
 
 /* High score styles */
 
