@@ -6,7 +6,7 @@ A timed quiz to test the user's JavaScript knowledge. The user gets 60 seconds t
 ## Website Link
 [Link to quiz](https://katyjmt.github.io/javascript-quiz/)
 
-## Screenshot
+## Screenshots
 ![Screenshots of the website](./assets/coding-quiz-1.png)
 ![Screenshots of the website](./assets/coding-quiz-2.png)
 ![Screenshots of the website](./assets/coding-quiz-3.png)
