@@ -10,14 +10,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto+Mono&display=swap" rel="stylesheet">
-    <script src="./script.js"></script>
 </head>
 <body>
     <div id="high-scores-container">
         <h1>High Scores</h1>
-        <div class="high-scores"></div>
-        <button id="go-back">Go back</button>
-        <button id="clear-high-scores">Clear high scores</button>
+        <div id="high-scores-list"></div>
+        <div id="high-score-buttons">
+            <a href="./index.html"><button class="hs-button" id="go-back">Go back</button></a>
+            <button class="hs-button" id="clear-high-scores">Clear high scores</button>
+        </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="./script.js" defer></script>
 </body>
 </html>

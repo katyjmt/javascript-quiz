@@ -12,10 +12,8 @@ const finalQuestionButtonsEl = $('.step:nth-last-of-type(2) button'); // Select 
 const correctIncorrectEl = $('.correctIncorrect'); // Select all <h3>s where 'Correct!' and 'Incorrect!' messages are displayed
 const submitScoreEl = $('#submitScore'); // Select submit button for user to save their score
 const initialsEl = $('#initials'); // Select initials input field
-
-// Keys for local storage:
-const LOCAL_STORAGE_INITIALS_KEY = "initials";
-const LOCAL_STORAGE_SCORE_KEY = "score";
+const highScoresEl = $('#high-scores-list'); // Select container where high scores will be added
+const clearScoresEl = $('#clear-high-scores'); // Select clear high scores button
 
 
 // Start timer when 'Start Quiz' button is clicked
@@ -78,19 +76,49 @@ correctEl.on("click", () => {
 finalQuestionButtonsEl.on("click", () => {
     const finalScore = secondsLeft;
     finalScoreEl.text(finalScore);
-    secondsLeft = 0;
-    timerEl.text(secondsLeft);
+    if (secondsLeft >= 0) {
+        clearInterval(timerInt); 
+        return;
+    } else {
+        secondsLeft = 0;
+        timerEl.text(secondsLeft);
+    }
 })
 
+// Create variable to store list of scores
+let scoreList; 
+
+if (localStorage.getItem("scores")) {
+    scoreList = JSON.parse(localStorage.getItem("scores"));
+} else {
+    scoreList = [];
+}
+
 // Event listener for when user clicks on [Submit] button to save their score
+submitScoreEl.on("click", () => {
+    if (initialsEl.val() == "") {
+        window.alert("Please enter your initials to save your score.")
+        return; // FIX THIS
+    } else {
+        let playerInitials = initialsEl.val();
+        let finalUserScore = finalScoreEl.text();
+        scoreList.push({initials: playerInitials, score: finalUserScore});
+        localStorage.setItem("scores", JSON.stringify(scoreList));
+    }
+})
 
+// Add sorted local storage items to high score page 
+let sortedHighScoreList = (JSON.parse(localStorage.getItem("scores"))).sort((a,b) => {
+    return b.score - a.score;
+});
 
+for (let i = 0; i < sortedHighScoreList.length; i++) {
+    let userScore = $('<p>').text(`${[i+1]}.  ${sortedHighScoreList[i].initials} - ${sortedHighScoreList[i].score}`).addClass('scoreboard');
+    highScoresEl.append(userScore);
+}
 
-// // What do I need:
-// // 1. I need a countdown timer that starts at 60 seconds and stops at 0 (don't let it go negative) - DONE
-// // 2. I need the countdown timer to drop 10 seconds if user selects an incorrect answer - DONE
-// // 3. I need the user's final score to be the final number on the countdown timer - DONE
-// // 4. I need the user to be taken to the next step when they click any button - DONE
-// // 5. I need the user to be told whether their previous answer was correct or incorrect on the next step - DONE
-// // 6. I need the user to be able to enter their initials to save their score in local storage
-// // 7. I need the score in local storage to be added to the High Scores table
+// Clear high scores
+clearScoresEl.on("click", () => {
+    localStorage.clear();
+    location.reload();
+});
